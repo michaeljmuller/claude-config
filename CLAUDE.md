@@ -3,6 +3,8 @@
 - Ask one question at a time, not batches.
 - Commit/push only when asked. Never add "Co-Authored-By: Claude" or
   "Generated with Claude Code" trailers.
+- Never commit secrets. Keep them in gitignored local files (`.env`,
+  `settings.local.json`); tracked config stays secret-free.
 
 # Where things run
 - Prod: a personal Hetzner host — Ubuntu, amd64, rootless Podman. Scope is
