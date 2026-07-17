@@ -84,6 +84,9 @@ running.
 
 ## 5. Data defaults
 
+When in need of a relational db, object store, or authentication provider, consider these
+first, but feel free to use something else if there's a clear advantage.
+
 - **Relational DB:** PostgreSQL.
 - **Object storage:** the Hetzner S3-compatible store — provision a new bucket per
   need (via boto3 or any S3 SDK) rather than inventing local file storage.
