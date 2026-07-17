@@ -26,6 +26,9 @@
   Deliver a correctly-packaged app and stop there — no deploy scripts.
 
 # Defaults
+
+These are just defaults; override any of these when there's a clear benefit.
+
 - Relational DB: PostgreSQL.
 - Object storage: Hetzner S3-compatible (provision a new bucket per need) rather than
   local file storage.
@@ -37,7 +40,6 @@
   audience before assuming a gate.
 - Git: trunk-based; branch only when working as a team (or simulating one with
   multiple agents).
-- These are just defaults; override any of these when there's a clear benefit — just say why
 
 # New projects
 - When starting or packaging a project, use the `new-project` skill for the standard
