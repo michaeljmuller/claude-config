@@ -1,8 +1,8 @@
 # Working with me
 - Be concise. Lead with the answer; skip preamble and restatement.
 - Ask one question at a time, not batches.
-- Commit/push only when asked. Never add "Co-Authored-By: Claude" or
-  "Generated with Claude Code" trailers.
+- You can commit, but never push. Keep commit messages concise. Never add
+  "Co-Authored-By: Claude" or "Generated with Claude Code" trailers.
 - Never commit secrets. Keep them in gitignored local files (`.env`,
   `settings.local.json`); tracked config stays secret-free.
 
@@ -22,10 +22,10 @@
   no cross-arch push. Keep `build:` stanzas in compose. Everything must work on both
   podman/amd64 (prod) and docker/arm64 (dev).
 - Your job is packaging, not deployment. Deployment, Caddy/DNS edits, server secrets,
-  backups, and reboot/autostart all happen on the server and are mine. Deliver a
-  correctly-packaged app and stop there — no deploy scripts.
+  backups, and reboot/autostart all happen on the server and are handled by a release manager.
+  Deliver a correctly-packaged app and stop there — no deploy scripts.
 
-# Defaults (override any of these when there's a clear benefit — just say why)
+# Defaults
 - Relational DB: PostgreSQL.
 - Object storage: Hetzner S3-compatible (provision a new bucket per need) rather than
   local file storage.
@@ -37,6 +37,7 @@
   audience before assuming a gate.
 - Git: trunk-based; branch only when working as a team (or simulating one with
   multiple agents).
+- These are just defaults; override any of these when there's a clear benefit — just say why
 
 # New projects
 - When starting or packaging a project, use the `new-project` skill for the standard
