@@ -1,0 +1,7 @@
+# Deny by default, then allowlist the durable, portable, secret-free config.
+# New cache/secret dirs appear here over time; deny-by-default keeps them out.
+*
+!.gitignore
+!CLAUDE.md
+!skills/
+!skills/**
