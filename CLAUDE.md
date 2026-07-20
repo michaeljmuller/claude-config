@@ -5,6 +5,7 @@
   "Co-Authored-By: Claude" or "Generated with Claude Code" trailers.
 - Never commit secrets. Keep them in gitignored local files (`.env`,
   `settings.local.json`); tracked config stays secret-free.
+- Don't use the AskUserQuestion tool.  Just ask the questions one-by-one in plain text.
 
 # Where things run
 - Prod: a personal Hetzner host — Ubuntu, amd64, rootless Podman. Scope is

@@ -50,12 +50,23 @@ project and component names when scaffolding.
 
 - **Dockerfile:** slim base image; copy the component's manifest and package; install
   it; `EXPOSE` the port; `CMD` the server. Build context is the component directory.
-- **Compose:** use `build:` stanzas (images are built on the server). Each app binds
-  `0.0.0.0` and publishes a host port — privacy comes from the firewall (only
-  22/80/443 open), not from binding loopback, because Caddy reaches the app over the
-  Podman gateway. Use `profiles:` for on-demand tools run via `compose run --rm`. Add
-  healthchecks and `depends_on: { condition: service_healthy }`. Write comments that
-  explain *why*.
+- **Compose:** set a top-level `name: <project>` in every compose file. Every project's
+  compose file lives at `src/docker/docker-compose.yml`, so the directory basename is
+  always `docker` — without an explicit `name:`, Compose derives the project name from
+  that basename and every app collides on the same project namespace (`docker-web-1`,
+  `docker-db-1`, ...). Whichever project's `up` runs last silently recreates the other's
+  container under its own image and ports. Use `build:` stanzas (images are built on
+  the server). Each app binds `0.0.0.0` and publishes a host port — privacy comes from
+  the firewall (only 22/80/443 open), not from binding loopback, because Caddy reaches
+  the app over the Podman gateway. Use `profiles:` for on-demand tools run via
+  `compose run --rm`. Add healthchecks and `depends_on: { condition: service_healthy }`.
+  Write comments that explain *why*.
+- **Restart policy:** give every long-running service `restart: unless-stopped` so it
+  recovers from crashes and comes back after a host reboot, while still honoring a
+  deliberate `stop`/`down`. (Omit it for one-shot `profiles:` tools run via
+  `compose run --rm`.) Reboot-autostart under rootless Podman also needs lingering
+  enabled for the user (`loginctl enable-linger`) — that's a server-side step for the
+  release manager, not a compose change, but note it in the handoff.
 - **Volumes:** bind mounts are fine for most data (e.g. read-only asset or config
   mounts). Reach for a named volume only where the image's uid/gid makes a bind mount
   painful under rootless Podman — notably the Postgres data directory, whose uid 999
@@ -76,11 +87,12 @@ project and component names when scaffolding.
     `<subdomain>.themullers.org { reverse_proxy host.containers.internal:<port> }`,
   - the subdomain that needs a DNS record.
 
-## 4. Port registry
+## 4. Published apps registry
 
-Before publishing an app, read `ports.md` (next to this file), claim a free host port,
-and record the new `subdomain -> port` there. This avoids collisions with apps already
-running.
+Before publishing an app, read `published-apps.md` (next to this file), claim a free
+host port and a unique Compose project name, and record the new
+`subdomain / host / port / compose project` row there. This avoids port collisions and
+Compose project-name collisions (see item 2) with apps already running.
 
 ## 5. Data defaults
 
