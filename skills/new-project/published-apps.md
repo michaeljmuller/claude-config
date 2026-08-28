@@ -17,3 +17,6 @@ of truth for what's allocated.
 | edit.themullers.org       | euhost1.themullers.org    | 3000      | vibeedit         |
 | vibelib.themullers.org    | euhost1.themullers.org    | 8000      | vibelib          |
 | conjugate.themullers.org  | euhost1.themullers.org    | 8081      | conjugate        |
+| keycloak.themullers.org   | euhost1.themullers.org    | 8082      | identity         |
+| ldapadmin.themullers.org  | euhost1.themullers.org    | 8083      | identity         |
+| (LDAPS, raw TCP)          | euhost1.themullers.org    | 1636      | identity         |
