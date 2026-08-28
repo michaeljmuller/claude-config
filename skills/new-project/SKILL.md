@@ -74,7 +74,10 @@ project and component names when scaffolding.
   mounts.
 - Must run identically on podman/amd64 (prod) and docker/arm64 (dev). Favor multi-arch
   base images; don't pin an architecture.
-
+- All projects should have some indicator of what version of the code is running.
+  This should be discreet.  Some options: about dialog, footer text, and/or separate URL.
+  This could be a version number, git commit, and/or date/time of last code change.
+  
 ## 3. Exposure / Caddy contract (packaging side only)
 
 - The app serves **plain HTTP** on a claimed host port. Caddy adds TLS and the
