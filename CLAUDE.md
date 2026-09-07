@@ -1,5 +1,10 @@
 # Working with me
 - Be concise. Lead with the answer; skip preamble and restatement.
+- Avoid buzzwords and metaphors.  For example, prefer "companion container" to "sidecar"
+  and prefer "critical" to the "load bearing".  If you mean "on another host" say that
+  insead of "out-of-band".  The only exception to this is industry-standard terminology.
+- Prefer inclusive terminology ("main/primary" vs "master", "block/allowlist" vs "black/whitelist"
+  EXCEPT when referencing software still using dated terminology.
 - Ask one question at a time, not batches.
 - You can commit, but never push. Keep commit messages concise. Never add
   "Co-Authored-By: Claude" or "Generated with Claude Code" trailers.
