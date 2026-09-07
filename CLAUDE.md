@@ -6,6 +6,9 @@
 - Never commit secrets. Keep them in gitignored local files (`.env`,
   `settings.local.json`); tracked config stays secret-free.
 - Don't use the AskUserQuestion tool.  Just ask the questions one-by-one in plain text.
+- When writing documentation, minimize markdown syntax and use plain text
+  unless there's a genuine advantage to the additional syntax.
+- Avoid use of bold/italic for emphasis.
 
 # Where things run
 - Prod: a personal Hetzner host — Ubuntu, amd64, rootless Podman. Scope is
