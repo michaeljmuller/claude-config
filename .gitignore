@@ -6,3 +6,6 @@
 !settings.json
 !skills/
 !skills/**
+
+# Skills synced from the Claude account; managed by Claude Code, not by hand.
+skills/synced/

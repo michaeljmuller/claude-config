@@ -21,3 +21,4 @@ of truth for what's allocated.
 | ldapadmin.themullers.org  | euhost1.themullers.org    | 8083      | identity         |
 | (LDAPS, raw TCP)          | euhost1.themullers.org    | 1636      | identity         |
 | vault.themullers.org      | euhost1.themullers.org    | 8084      | vault            |
+| comosediz.themullers.org  | euhost1.themullers.org    | 8085      | comosediz        |

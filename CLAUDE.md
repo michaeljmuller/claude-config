@@ -2,7 +2,9 @@
 - Be concise. Lead with the answer; skip preamble and restatement.
 - Avoid buzzwords and metaphors.  For example, prefer "companion container" to "sidecar"
   and prefer "critical" to the "load bearing".  If you mean "on another host" say that
-  insead of "out-of-band".  The only exception to this is industry-standard terminology.
+  insead of "out-of-band".  Say "your default" rather than "house default", "is better"
+  rather than "wins", and "is justified" rather than "earns its place".  The only
+  exception to this is industry-standard terminology.
 - Prefer inclusive terminology ("main/primary" vs "master", "block/allowlist" vs "black/whitelist"
   EXCEPT when referencing software still using dated terminology.
 - Ask one question at a time, not batches.
@@ -38,10 +40,13 @@
 
 These are just defaults; override any of these when there's a clear benefit.
 
-- Relational DB: PostgreSQL.
-- Object storage: Hetzner S3-compatible (provision a new bucket per need) rather than
-  local file storage.
-- Persistent state: bind mounts are fine in general; the one real trap under rootless
+- Storage: choose what suits the task. For a relational database, use PostgreSQL for
+  consistency with other projects when nothing else has an advantage; when another
+  database (SQLite, for example) is a better fit, use it. Hetzner's S3-compatible
+  object storage is available
+  when object storage is the best fit (provision a new bucket per need). Local files
+  in a volume or bind mount are sometimes the simplest and best solution.
+- Persistent state: bind mounts are fine in general; the one real problem under rootless
   Podman is the Postgres image's uid/gid, where a bind-mounted data dir needs an
   out-of-band chown — so use a named volume for Postgres data (and any image with the
   same uid/gid sensitivity).
